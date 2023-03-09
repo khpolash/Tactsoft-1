@@ -1,0 +1,83 @@
+﻿@using Tactsoft.Core;
+@model Tactsoft.Core.Entities.AllowanceSetting
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Create Attachment Information</h3>
+                </div>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <div class="row mb-2">
+                                    <label asp-for="valuePercetize" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="valuePercetize" class="form-control" />
+                                        <span asp-validation-for="valuePercetize" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="Value" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Value" class="form-control" />
+                                        <span asp-validation-for="Value" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-3">
+                                    <label asp-for="AllowanceType" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9 ">
+                                        <select asp-for="AllowanceType" class="form-control" asp-items="Html.GetEnumSelectList<Allowance>()">
+                                            
+                                        </select>
+                                        <span asp-validation-for="AllowanceType" class="text-danger"></span>
+                                    </div>
+                                </div> 
+                                <div class="card-footer">
+                                    <div style="text-align:end">
+                                        <a class="btn btn-outline-danger btn-sm" asp-action="Index">
+                                            <i class="far fa-window-close"></i> Back to list
+                                        </a>
+                                        <button type="submit" value="Create" class="btn btn-outline-primary btn-sm">
+                                            <i class="fa-solid fa-rotate"></i> Create
+                                        </button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

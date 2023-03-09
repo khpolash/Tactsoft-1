@@ -1,0 +1,131 @@
+﻿@using Tactsoft.Core
+@model Tactsoft.Core.Entities.Advance
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Project</h4>
+<hr />
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Create Service Information</h3>
+                </div>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                                <div class="row mb-2">
+                                    <label asp-for="EmployeeId" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId">
+                                            <option value="">Select Employee</option>
+                                        </select>
+                                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="AdvanceTypeId" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <select asp-for="AdvanceTypeId" class="form-control" asp-items="ViewBag.AdvancetypeId">
+                                            <option value="">Select Department</option>
+                                        </select>
+                                        <span asp-validation-for="AdvanceTypeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                               
+                                <div class="row mb-2">
+                                    <label asp-for="AdvanceDate" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="AdvanceDate" class="form-control" />
+                                        <span asp-validation-for="AdvanceDate" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="ApproveAmount" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="ApproveAmount" class="form-control" />
+                                        <span asp-validation-for="ApproveAmount" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="MonthlyDeduction" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="MonthlyDeduction" class="form-control" />
+                                        <span asp-validation-for="MonthlyDeduction" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="DisburseYear" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="DisburseYear" class="form-control" />
+                                        <span asp-validation-for="DisburseYear" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+
+                                <div class="row mb-3">
+                                    <label asp-for="DisburseMonth" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9 ">
+                                        <select asp-for="DisburseMonth" class="form-control" asp-items="Html.GetEnumSelectList<Month>()">
+                                        </select>
+                                        <span asp-validation-for="DisburseMonth" class="text-danger"></span>
+                                    </div>
+
+                                <div class="row mb-2">
+                                    <label asp-for="ApproveBy" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="ApproveBy" class="form-control" />
+                                        <span asp-validation-for="ApproveBy" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div style="text-align:end">
+                            <a class="btn btn-outline-danger btn-sm" asp-action="Index">
+                                <i class="far fa-window-close"></i> Back to list
+                            </a>
+                            <button type="submit" value="Create" class="btn btn-outline-primary btn-sm">
+                                <i class="fa-solid fa-rotate"></i> Create
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
+
+

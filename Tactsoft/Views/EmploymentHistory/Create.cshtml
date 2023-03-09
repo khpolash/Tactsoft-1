@@ -1,0 +1,119 @@
+﻿@model Tactsoft.Core.Entities.EmploymentHistory
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h1>Create</h1>
+
+<h4>Employment History</h4>
+<hr />
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Create Project Information</h3>
+                </div>
+                <form asp-action="Create" enctype="multipart/form-data">
+                    <div class="card-body">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row mt-2">
+                            <div class="col-md-6">
+                               
+                                <div class="row mb-2">
+                                    <label asp-for="EmployeeId" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <select asp-for="EmployeeId" class="form-control" asp-items="ViewBag.EmployeeId">
+                                            <option value="">Select employee</option>
+                                        </select>
+                                        <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="DesignationId" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <select asp-for="DesignationId" class="form-control" asp-items="ViewBag.DesignationId">
+                                            <option value="">Select designation</option>
+                                        </select>
+                                        <span asp-validation-for="Designation" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="NameOfCompany" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="NameOfCompany" class="form-control" />
+                                        <span asp-validation-for="NameOfCompany" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="JobFor" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="JobFor" class="form-control" />
+                                        <span asp-validation-for="JobFor" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-2">
+                                    <label asp-for="JobTo" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="JobTo" class="form-control" />
+                                        <span asp-validation-for="JobTo" class="text-danger"></span>
+                                    </div>
+                                </div>
+
+                                <div class="row mb-2">
+                                    <label asp-for="Salary" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="Salary" class="form-control" />
+                                        <span asp-validation-for="Salary" class="text-danger"></span>
+                                    </div>
+                                </div>
+                                <div class="row mb-2">
+                                    <label asp-for="ReasonForLeaving" class="col-md-3 col-form-label"></label>
+                                    <div class="col-md-9">
+                                        <input asp-for="ReasonForLeaving" class="form-control" />
+                                        <span asp-validation-for="ReasonForLeaving" class="text-danger"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card-footer">
+                        <div style="text-align:end">
+                            <a class="btn btn-outline-danger btn-sm" asp-action="Index">
+                                <i class="far fa-window-close"></i> Back to list
+                            </a>
+                            <button type="submit" value="Create" class="btn btn-outline-primary btn-sm">
+                                <i class="fa-solid fa-rotate"></i> Create
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }

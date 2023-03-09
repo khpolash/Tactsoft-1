@@ -1,0 +1,117 @@
+﻿@model Tactsoft.Core.Entities.EmploymentHistory
+
+@{
+    ViewData["Title"] = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<div class="content-wrapper">
+    <div class="content-header">
+        <div class="container-fluid">
+            <div class="row mb-2">
+                <div class="col-sm-6">
+                    <h4 class="m-0">@ViewData["Title"]</h4>
+                </div>
+                <div class="col-sm-6">
+                    <ol class="breadcrumb float-sm-right">
+                        <li class="breadcrumb-item"><a asp-action="Index" asp-controller="Dashboard">Dashboard</a></li>
+                        <li class="breadcrumb-item active">@ViewData["Title"]</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="content">
+        <div class="container-fluid d-flex justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">update @ViewData["Title"]</h3>
+                    </div>
+                    <form asp-action="Edit">
+                        <div class="card-body">
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                            <input type="hidden" asp-for="Id" />            <div class="form-group">
+                                <label asp-for="EmployeeId" class="control-label"></label>
+                                <input asp-for="EmployeeId" class="form-control" />
+                                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="NameOfCompany" class="control-label"></label>
+                                <input asp-for="NameOfCompany" class="form-control" />
+                                <span asp-validation-for="NameOfCompany" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="DesignationId" class="control-label"></label>
+                                <input asp-for="DesignationId" class="form-control" />
+                                <span asp-validation-for="DesignationId" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="JobFor" class="control-label"></label>
+                                <input asp-for="JobFor" class="form-control" />
+                                <span asp-validation-for="JobFor" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="JobTo" class="control-label"></label>
+                                <input asp-for="JobTo" class="form-control" />
+                                <span asp-validation-for="JobTo" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Salary" class="control-label"></label>
+                                <input asp-for="Salary" class="form-control" />
+                                <span asp-validation-for="Salary" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="ReasonForLeaving" class="control-label"></label>
+                                <input asp-for="ReasonForLeaving" class="form-control" />
+                                <span asp-validation-for="ReasonForLeaving" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreatedBy" class="control-label"></label>
+                                <input asp-for="CreatedBy" class="form-control" />
+                                <span asp-validation-for="CreatedBy" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="CreatedDateUtc" class="control-label"></label>
+                                <input asp-for="CreatedDateUtc" class="form-control" />
+                                <span asp-validation-for="CreatedDateUtc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdatedBy" class="control-label"></label>
+                                <input asp-for="UpdatedBy" class="form-control" />
+                                <span asp-validation-for="UpdatedBy" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="UpdatedDateUtc" class="control-label"></label>
+                                <input asp-for="UpdatedDateUtc" class="form-control" />
+                                <span asp-validation-for="UpdatedDateUtc" class="text-danger"></span>
+                            </div>
+                            <div class="form-group">
+                                <label asp-for="Id" class="control-label"></label>
+                                <input asp-for="Id" class="form-control" />
+                                <span asp-validation-for="Id" class="text-danger"></span>
+                            </div>
+                            <div class="card-footer">
+                                <div style="text-align:end">
+                                    <a class="btn btn-outline-danger btn-sm" asp-action="Index">
+                                        <i class="far fa-window-close"></i> Cancel
+                                    </a>
+                                    <button type="submit" value="Create" class="btn btn-outline-primary btn-sm">
+                                        <i class="far fa-save"></i> Save
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </section>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    }
