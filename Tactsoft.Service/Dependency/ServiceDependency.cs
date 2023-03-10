@@ -60,7 +60,7 @@ namespace Tactsoft.Service.Dependency
             services.AddScoped<INomineeService,NomineeService>();
             services.AddScoped<IEmploymentHistoryService, EmploymentHistoryService>();
             services.AddScoped<IServiceInformationServices, ServiceInformationServices>();
-            services.AddScoped<IEmployeeService, EmployeeService>();
+            services.AddScoped<IEmployeeTypeServices, EmployeeTypeServices>();
 
 
 
