@@ -60,10 +60,12 @@ namespace Tactsoft.Service.DbDependencies
         public DbSet<EmploymentHistory>EmploymentHistories { get; set; }
         public DbSet<Nominee> Nominees { get; set; }
         public DbSet<Attendance> Attendances { get; set; }
-        
+        public DbSet<ServiceInformation> ServiceInformations { get; set; }
+        public DbSet<EmployeeType> EmployeeTypes { get; set; }
 
-      
-        
+
+
+
 
 
         #endregion

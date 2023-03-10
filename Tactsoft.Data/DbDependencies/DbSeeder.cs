@@ -688,7 +688,25 @@ namespace Tactsoft.Data.DbDependencies
           EntryType = "Admin",
           CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
 
-      }); ;
+      });
+            modelBuilder.Entity<ServiceInformation>().HasData(
+                new ServiceInformation
+                {
+                    Id = 1,
+                    EmployeeId=1,
+                    DesignationId=1,
+                    DepertmentId=1,
+                    DateOfJoining=DateTime.ParseExact("2023-03-02","yyyy-mm-dd",null),
+                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
+                });
+            modelBuilder.Entity<EmployeeType>().HasData(
+                new EmployeeType
+                {
+                    Id = 1,
+                    Remarks="Good",
+                    DateOfParmanent = DateTime.ParseExact("2023-03-02", "yyyy-mm-dd", null),
+                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
+                });
 
         }
 

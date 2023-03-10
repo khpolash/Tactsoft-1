@@ -15,5 +15,6 @@ namespace Tactsoft.Core.Entities
         public string DesignationName { get; set; }
         public IList<ServiceInfo> ServiceInfos { get; set; }
         public IList<EmploymentHistory> EmploymentHistorys { get; set; }
+        public IList<ServiceInformation> ServiceInformations { get; set; }
     }
 }

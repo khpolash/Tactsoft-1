@@ -14,5 +14,6 @@ namespace Tactsoft.Core.Entities
         [Display(Name ="Department")]
         public string DepartmentName { get; set; }
         public IList<ServiceInfo> ServiceInfos { get;set; }
+        public IList<ServiceInformation>ServiceInformations { get;set; }
     }
 }

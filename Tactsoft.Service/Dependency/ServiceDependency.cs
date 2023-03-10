@@ -59,6 +59,8 @@ namespace Tactsoft.Service.Dependency
             services.AddScoped<IReferenceService, ReferenceService>();
             services.AddScoped<INomineeService,NomineeService>();
             services.AddScoped<IEmploymentHistoryService, EmploymentHistoryService>();
+            services.AddScoped<IServiceInformationServices, ServiceInformationServices>();
+            services.AddScoped<IEmployeeService, EmployeeService>();
 
 
 
