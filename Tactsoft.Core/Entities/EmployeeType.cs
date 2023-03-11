@@ -11,6 +11,14 @@ namespace Tactsoft.Core.Entities
 {
     public class EmployeeType:BaseEntity
     {
+        public Boolean Sat { get;set; }
+        public Boolean Sun { get; set; }
+        public Boolean Mon { get; set; }
+        public Boolean Tue { get; set; }
+        public Boolean Wed { get; set; }
+        public Boolean Thu { get; set; }
+        public Boolean Fri { get; set; }
+
         [Display(Name ="Parmanent Date")]
         public DateTime DateOfParmanent { get; set; }
         public string Remarks { get; set; }
