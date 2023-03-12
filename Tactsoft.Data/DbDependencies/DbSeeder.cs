@@ -358,7 +358,7 @@ namespace Tactsoft.Data.DbDependencies
             new Employee
             {
                 Id = 1,
-                FristName = "Hasan",
+                FirstName = "Hasan",
                 MiddleName = "Ali",
                 LastName = "Khan",
                 DateOfBirth = DateTime.ParseExact("1994-02-01", "yyyy-mm-dd", null),
@@ -542,55 +542,8 @@ namespace Tactsoft.Data.DbDependencies
                Date = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null),
                CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
            });
-            modelBuilder.Entity<AllowanceSetting>().HasData(
-                new AllowanceSetting
-                {
-                    Id = 1,
-                    valuePercetize = "Good",
-                    Value = 30000,
-                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
-                });
-            modelBuilder.Entity<Attandance>().HasData(
-                new Attandance
-                {
-                    Id = 1,
-                    AttandanceDate = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null),
-                    EmployeeId = 1,
-                    Remarks = "Good",
-                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
-                });
-            modelBuilder.Entity<SalaryType>().HasData(
-                new SalaryType
-                {
-                    Id = 1,
-                    SalaryTypeName = "House Rent",
-                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
-                });
-            modelBuilder.Entity<SalarySetup>().HasData(
-                new SalarySetup
-                {
-                    Id = 1,
-                    EmployeeId = 1,
-                    Basic = 80000,
-                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
-                });
-            modelBuilder.Entity<Allowens>().HasData(
-                new Allowens
-                {
-                    Id = 1,
-                    AllowensName = "Notice",
-                    Comment = "Salary Encrement 10% ",
-                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
-                });
-            modelBuilder.Entity<AllowensDetails>().HasData(
-                new AllowensDetails
-                {
-                    Id = 1,
-                    SalarySetupId = 1,
-                    Amount = 10000,
-                    AllowensId = 1,
-                    CreatedDateUtc = DateTime.ParseExact("2023-02-01", "yyyy-MM-dd", null)
-                });
+           
+          
             modelBuilder.Entity<Deduction>().HasData(
                 new Deduction
                 {

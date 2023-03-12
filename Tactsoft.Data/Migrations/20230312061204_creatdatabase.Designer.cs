@@ -3,17 +3,19 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tactsoft.Service.DbDependencies;
 
 #nullable disable
 
-namespace Tactsoft.Data.Data.Migrations
+namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230312061204_creatdatabase")]
+    partial class creatdatabase
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -619,12 +621,12 @@ namespace Tactsoft.Data.Data.Migrations
                             CompanyInfoId = 1L,
                             CreatedBy = 0L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            Date = new DateTime(2023, 3, 11, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Local),
                             EmployeeId = 1L,
                             EntryType = "Admin",
-                            Intime = new DateTime(2023, 3, 11, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Intime = new DateTime(2023, 3, 12, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             IntimeNumber = 5.0,
-                            OutTime = new DateTime(2023, 3, 11, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            OutTime = new DateTime(2023, 3, 12, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             OutTimeNumber = 5.0
                         });
                 });

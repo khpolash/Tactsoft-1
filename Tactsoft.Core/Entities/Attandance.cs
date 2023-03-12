@@ -12,8 +12,8 @@ namespace Tactsoft.Core.Entities
     public class Attandance:BaseEntity
     {
         [Required]
-        [Display(Name ="Attandance Date")]
-        public DateTime AttandanceDate { get; set; }
+        [Display(Name ="Attendance Date")]
+        public DateTime AttendanceDate { get; set; }
         [Required]
         [ForeignKey("Employee")]
         [Display(Name ="Employee Name")]

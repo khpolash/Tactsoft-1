@@ -47,11 +47,7 @@ namespace Tactsoft.Service.DbDependencies
         public DbSet<Award>Awards { get; set; }
         public DbSet<LeaveType> LeaveTypes { get; set; }
         public DbSet<AwardType> AwardTypes { get; set; }
-        public DbSet<AllowanceSetting> AllowanceSettings { get; set; }
         public DbSet<Attandance> Attandances { get; set; }
-        public DbSet<SalarySetup> SalarySetups { get; set; }
-        public DbSet<Allowens> Allowenss { get; set; }
-        public DbSet<AllowensDetails> AllowensDetailss { get; set; }
         public DbSet<Deduction> Deductions { get; set; }
         public DbSet<LeaveApplication> LeaveApplications { get; set; }
         public DbSet<Advance>Advances { get; set; }

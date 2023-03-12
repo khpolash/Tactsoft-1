@@ -145,7 +145,7 @@ namespace Tactsoft.Controllers.Admin
                         employee.Picture = emp.Picture;
                     }
                     emp.Picture = employee.Picture;
-                    emp.FristName = employee.FristName;
+                    emp.FirstName = employee.FirstName;
                     emp.MiddleName = employee.MiddleName;
                     emp.LastName = employee.LastName;
                     emp.NID = employee.NID;

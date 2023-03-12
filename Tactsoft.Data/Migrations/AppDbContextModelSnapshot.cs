@@ -3,19 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tactsoft.Service.DbDependencies;
 
 #nullable disable
 
-namespace Tactsoft.Data.Data.Migrations
+namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230228173350_createdatabase")]
-    partial class createdatabase
+    partial class AppDbContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -157,7 +155,7 @@ namespace Tactsoft.Data.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.AllowanceSetting", b =>
+            modelBuilder.Entity("Tactsoft.Core.Entities.Advance", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -165,14 +163,38 @@ namespace Tactsoft.Data.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<int>("AllowanceType")
+                    b.Property<DateTime>("AdvanceDate")
+                        .HasColumnType("Date");
+
+                    b.Property<long?>("AdvanceTypeId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<double>("ApproveAmount")
+                        .HasColumnType("float");
+
+                    b.Property<string>("ApproveBy")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<int>("DisburseMonth")
                         .HasColumnType("int");
 
-                    b.Property<long>("CreatedBy")
+                    b.Property<DateTime>("DisburseYear")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("EmployeeId")
+                        .IsRequired()
                         .HasColumnType("bigint");
 
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
+                    b.Property<double>("MonthlyDeduction")
+                        .HasColumnType("float");
 
                     b.Property<long?>("UpdatedBy")
                         .HasColumnType("bigint");
@@ -180,29 +202,32 @@ namespace Tactsoft.Data.Data.Migrations
                     b.Property<DateTimeOffset?>("UpdatedDateUtc")
                         .HasColumnType("datetimeoffset");
 
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
-                    b.Property<string>("valuePercetize")
-                        .HasColumnType("nvarchar(max)");
-
                     b.HasKey("Id");
 
-                    b.ToTable("AllowanceSettings");
+                    b.HasIndex("AdvanceTypeId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Advances");
 
                     b.HasData(
                         new
                         {
                             Id = 1L,
-                            AllowanceType = 0,
+                            AdvanceDate = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            AdvanceTypeId = 1L,
+                            ApproveAmount = 10000.0,
+                            ApproveBy = "Arif",
                             CreatedBy = 0L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            Value = 30000.0,
-                            valuePercetize = "Good"
+                            DisburseMonth = 0,
+                            DisburseYear = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            EmployeeId = 1L,
+                            MonthlyDeduction = 2000.0
                         });
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.Allowens", b =>
+            modelBuilder.Entity("Tactsoft.Core.Entities.AdvanceType", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
@@ -210,10 +235,8 @@ namespace Tactsoft.Data.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<string>("AllowensName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Comment")
+                    b.Property<string>("AdvanceTypeName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("CreatedBy")
@@ -230,60 +253,15 @@ namespace Tactsoft.Data.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Allowenss");
+                    b.ToTable("AdvanceTypes");
 
                     b.HasData(
                         new
                         {
                             Id = 1L,
-                            AllowensName = "Notice",
-                            Comment = "Salary Encrement 10% ",
+                            AdvanceTypeName = "Advance Salary",
                             CreatedBy = 0L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0))
-                        });
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.AllowensDetails", b =>
-                {
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("AllowensId")
-                        .IsRequired()
-                        .HasColumnType("bigint");
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("SalarySetupId")
-                        .IsRequired()
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AllowensDetailss");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            AllowensId = 1L,
-                            Amount = 10000.0,
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            SalarySetupId = 1L
                         });
                 });
 
@@ -391,7 +369,7 @@ namespace Tactsoft.Data.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("AttandanceDate")
+                    b.Property<DateTime>("AttendanceDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("CreatedBy")
@@ -421,17 +399,83 @@ namespace Tactsoft.Data.Data.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("Attandances");
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.Attendance", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long?>("BranchInfoId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("CompanyInfoId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("Date");
+
+                    b.Property<long?>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("EntryType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Intime")
+                        .HasColumnType("Date");
+
+                    b.Property<double>("IntimeNumber")
+                        .HasColumnType("float");
+
+                    b.Property<DateTime>("OutTime")
+                        .HasColumnType("Date");
+
+                    b.Property<double>("OutTimeNumber")
+                        .HasColumnType("float");
+
+                    b.Property<long?>("UpdatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BranchInfoId");
+
+                    b.HasIndex("CompanyInfoId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("Attendances");
 
                     b.HasData(
                         new
                         {
                             Id = 1L,
-                            AttandanceDate = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            BranchInfoId = 1L,
+                            CompanyInfoId = 1L,
                             CreatedBy = 0L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
+                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Local),
                             EmployeeId = 1L,
-                            Present = 0,
-                            Remarks = "Good"
+                            EntryType = "Admin",
+                            Intime = new DateTime(2023, 3, 12, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            IntimeNumber = 5.0,
+                            OutTime = new DateTime(2023, 3, 12, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            OutTimeNumber = 5.0
                         });
                 });
 
@@ -503,6 +547,7 @@ namespace Tactsoft.Data.Data.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
                     b.Property<string>("AwardTypeName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long>("CreatedBy")
@@ -1247,7 +1292,7 @@ namespace Tactsoft.Data.Data.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FristName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -1335,7 +1380,7 @@ namespace Tactsoft.Data.Data.Migrations
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
                             DateOfBirth = new DateTime(1994, 1, 1, 0, 2, 0, 0, DateTimeKind.Unspecified),
-                            FristName = "Hasan",
+                            FirstName = "Hasan",
                             GenderId = 1L,
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Khan",
@@ -1348,6 +1393,142 @@ namespace Tactsoft.Data.Data.Migrations
                             ProjectId = 1L,
                             ReligionId = 1L,
                             UserName = ""
+                        });
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.EmployeeType", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("DateOfParmanent")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("Fri")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Mon")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Remarks")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Sat")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Sun")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Thu")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("Tue")
+                        .HasColumnType("bit");
+
+                    b.Property<long?>("UpdatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<bool>("Wed")
+                        .HasColumnType("bit");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("EmployeeTypes");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedBy = 0L,
+                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
+                            DateOfParmanent = new DateTime(2023, 1, 2, 0, 3, 0, 0, DateTimeKind.Unspecified),
+                            Fri = false,
+                            Mon = false,
+                            Remarks = "Good",
+                            Sat = false,
+                            Sun = false,
+                            Thu = false,
+                            Tue = false,
+                            Wed = false
+                        });
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.EmploymentHistory", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<long?>("DesignationId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("JobFor")
+                        .HasColumnType("Date");
+
+                    b.Property<DateTime>("JobTo")
+                        .HasColumnType("Date");
+
+                    b.Property<string>("NameOfCompany")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReasonForLeaving")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Salary")
+                        .HasColumnType("float");
+
+                    b.Property<long?>("UpdatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DesignationId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("EmploymentHistories");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedBy = 0L,
+                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
+                            EmployeeId = 1L,
+                            JobFor = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            JobTo = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            NameOfCompany = "Us Bangla",
+                            ReasonForLeaving = "abcd",
+                            Salary = 85000.0
                         });
                 });
 
@@ -1464,6 +1645,81 @@ namespace Tactsoft.Data.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Tactsoft.Core.Entities.LeaveApplication", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("AttachmentFile")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("AttachmentId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("AttachmentTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("EmployeeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("LeaveTypeId")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("UpdatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("AttachmentId");
+
+                    b.HasIndex("AttachmentTypeId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("LeaveTypeId");
+
+                    b.ToTable("LeaveApplications");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            AttachmentFile = "uhyg",
+                            CreatedBy = 0L,
+                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
+                            Description = "this is descriptin",
+                            EmployeeId = 1L,
+                            EndDate = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            LeaveTypeId = 1L,
+                            StartDate = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Subject = "abcd"
+                        });
+                });
+
             modelBuilder.Entity("Tactsoft.Core.Entities.LeaveType", b =>
                 {
                     b.Property<long>("Id")
@@ -1479,6 +1735,7 @@ namespace Tactsoft.Data.Data.Migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<string>("LeaveTypeName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<long?>("UpdatedBy")
@@ -1553,6 +1810,73 @@ namespace Tactsoft.Data.Data.Migrations
                         });
                 });
 
+            modelBuilder.Entity("Tactsoft.Core.Entities.Nominee", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ContactNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<long?>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<string>("NomineeName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Picture")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("RelationShipId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UpdatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("percentage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.HasIndex("RelationShipId");
+
+                    b.ToTable("Nominees");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Address = "Mirpur",
+                            ContactNumber = "018213256442",
+                            CreatedBy = 0L,
+                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
+                            EmployeeId = 1L,
+                            NomineeName = "Kabir",
+                            Picture = "zsdfasdf",
+                            RelationShipId = 1L,
+                            percentage = "100%"
+                        });
+                });
+
             modelBuilder.Entity("Tactsoft.Core.Entities.Project", b =>
                 {
                     b.Property<long>("Id")
@@ -1623,6 +1947,63 @@ namespace Tactsoft.Data.Data.Migrations
                             ProjectDescription = "Create a beautiful building",
                             ProjectName = "Construction",
                             StartDate = new DateTime(2023, 1, 1, 0, 2, 0, 0, DateTimeKind.Unspecified)
+                        });
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.Reference", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<string>("Address")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("MobileNumber")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Nid")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Phone")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ReferenceName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<long?>("UpdatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("References");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            Address = "Mirpur",
+                            CreatedBy = 0L,
+                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
+                            MobileNumber = "023256589522",
+                            Nid = 56588552685.0,
+                            Phone = "01213256442",
+                            ReferenceName = "Kamal"
                         });
                 });
 
@@ -1721,83 +2102,6 @@ namespace Tactsoft.Data.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalarySetup", b =>
-                {
-                    b.Property<long>("Id")
-                        .HasColumnType("bigint");
-
-                    b.Property<double>("Basic")
-                        .HasColumnType("float");
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SalarySetups");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Basic = 80000.0,
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            EmployeeId = 1L
-                        });
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalaryType", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("SalaryTypeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SalaryType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            SalaryTypeName = "House Rent"
-                        });
-                });
-
             modelBuilder.Entity("Tactsoft.Core.Entities.ServiceInfo", b =>
                 {
                     b.Property<long>("Id")
@@ -1863,6 +2167,64 @@ namespace Tactsoft.Data.Data.Migrations
                             EmployeeId = 1L,
                             JoiningDate = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             Remarks = "Good"
+                        });
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.ServiceInformation", b =>
+                {
+                    b.Property<long>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bigint");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
+
+                    b.Property<long>("CreatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset>("CreatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<DateTime>("DateOfJoining")
+                        .HasColumnType("datetime2");
+
+                    b.Property<long?>("DepertmentId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("DesignationId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("EmployeeId")
+                        .IsRequired()
+                        .HasColumnType("bigint");
+
+                    b.Property<long?>("UpdatedBy")
+                        .HasColumnType("bigint");
+
+                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
+                        .HasColumnType("datetimeoffset");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepertmentId");
+
+                    b.HasIndex("DesignationId");
+
+                    b.HasIndex("EmployeeId");
+
+                    b.ToTable("ServiceInformations");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1L,
+                            CreatedBy = 0L,
+                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
+                            DateOfJoining = new DateTime(2023, 1, 2, 0, 3, 0, 0, DateTimeKind.Unspecified),
+                            DepertmentId = 1L,
+                            DesignationId = 1L,
+                            EmployeeId = 1L
                         });
                 });
 
@@ -2227,23 +2589,23 @@ namespace Tactsoft.Data.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.AllowensDetails", b =>
+            modelBuilder.Entity("Tactsoft.Core.Entities.Advance", b =>
                 {
-                    b.HasOne("Tactsoft.Core.Entities.Allowens", "Allowens")
-                        .WithMany("AllowensDetailss")
-                        .HasForeignKey("Id")
+                    b.HasOne("Tactsoft.Core.Entities.AdvanceType", "AdvanceType")
+                        .WithMany("Advances")
+                        .HasForeignKey("AdvanceTypeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Tactsoft.Core.Entities.SalarySetup", "SalarySetup")
-                        .WithMany("AllowensDetailss")
-                        .HasForeignKey("Id")
+                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
+                        .WithMany("Advances")
+                        .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Allowens");
+                    b.Navigation("AdvanceType");
 
-                    b.Navigation("SalarySetup");
+                    b.Navigation("Employee");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Attachment", b =>
@@ -2272,6 +2634,33 @@ namespace Tactsoft.Data.Data.Migrations
                         .HasForeignKey("EmployeeId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.Attendance", b =>
+                {
+                    b.HasOne("Tactsoft.Core.Entities.BranchInfo", "BranchInfo")
+                        .WithMany("Attendances")
+                        .HasForeignKey("BranchInfoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Tactsoft.Core.Entities.CompanyInfo", "CompanyInfo")
+                        .WithMany("Attendances")
+                        .HasForeignKey("CompanyInfoId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
+                        .WithMany("Attendances")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("BranchInfo");
+
+                    b.Navigation("CompanyInfo");
 
                     b.Navigation("Employee");
                 });
@@ -2490,6 +2879,24 @@ namespace Tactsoft.Data.Data.Migrations
                     b.Navigation("project");
                 });
 
+            modelBuilder.Entity("Tactsoft.Core.Entities.EmploymentHistory", b =>
+                {
+                    b.HasOne("Tactsoft.Core.Entities.Designation", "Designation")
+                        .WithMany("EmploymentHistorys")
+                        .HasForeignKey("DesignationId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
+                        .WithMany("EmploymentHistorys")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Designation");
+
+                    b.Navigation("Employee");
+                });
+
             modelBuilder.Entity("Tactsoft.Core.Entities.FamilyMember", b =>
                 {
                     b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
@@ -2500,6 +2907,52 @@ namespace Tactsoft.Data.Data.Migrations
 
                     b.HasOne("Tactsoft.Core.Entities.RelationShip", "RelationShip")
                         .WithMany("FamilyMembers")
+                        .HasForeignKey("RelationShipId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("RelationShip");
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.LeaveApplication", b =>
+                {
+                    b.HasOne("Tactsoft.Core.Entities.Attachment", null)
+                        .WithMany("LeaveApplications")
+                        .HasForeignKey("AttachmentId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Tactsoft.Core.Entities.AttachmentType", null)
+                        .WithMany("LeaveApplications")
+                        .HasForeignKey("AttachmentTypeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
+                        .WithMany("LeaveApplications")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.HasOne("Tactsoft.Core.Entities.LeaveType", "LeaveType")
+                        .WithMany("LeaveApplications")
+                        .HasForeignKey("LeaveTypeId")
+                        .OnDelete(DeleteBehavior.Restrict);
+
+                    b.Navigation("Employee");
+
+                    b.Navigation("LeaveType");
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.Nominee", b =>
+                {
+                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
+                        .WithMany("Nominees")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Tactsoft.Core.Entities.RelationShip", "RelationShip")
+                        .WithMany("Nominees")
                         .HasForeignKey("RelationShipId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -2533,17 +2986,6 @@ namespace Tactsoft.Data.Data.Migrations
                     b.Navigation("CompanyInfo");
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalarySetup", b =>
-                {
-                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
-                        .WithMany("SalarySetups")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
             modelBuilder.Entity("Tactsoft.Core.Entities.ServiceInfo", b =>
                 {
                     b.HasOne("Tactsoft.Core.Entities.BranchInfo", "BranchInfo")
@@ -2567,6 +3009,33 @@ namespace Tactsoft.Data.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("BranchInfo");
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Designation");
+
+                    b.Navigation("Employee");
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.ServiceInformation", b =>
+                {
+                    b.HasOne("Tactsoft.Core.Entities.Department", "Department")
+                        .WithMany("ServiceInformations")
+                        .HasForeignKey("DepertmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Tactsoft.Core.Entities.Designation", "Designation")
+                        .WithMany("ServiceInformations")
+                        .HasForeignKey("DesignationId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
+                        .WithMany("ServiceInformations")
+                        .HasForeignKey("EmployeeId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Department");
 
@@ -2608,14 +3077,21 @@ namespace Tactsoft.Data.Data.Migrations
                     b.Navigation("City");
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.Allowens", b =>
+            modelBuilder.Entity("Tactsoft.Core.Entities.AdvanceType", b =>
                 {
-                    b.Navigation("AllowensDetailss");
+                    b.Navigation("Advances");
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.Attachment", b =>
+                {
+                    b.Navigation("LeaveApplications");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.AttachmentType", b =>
                 {
                     b.Navigation("Attachments");
+
+                    b.Navigation("LeaveApplications");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.AwardType", b =>
@@ -2630,6 +3106,8 @@ namespace Tactsoft.Data.Data.Migrations
 
             modelBuilder.Entity("Tactsoft.Core.Entities.BranchInfo", b =>
                 {
+                    b.Navigation("Attendances");
+
                     b.Navigation("Employees");
 
                     b.Navigation("Projects");
@@ -2650,6 +3128,8 @@ namespace Tactsoft.Data.Data.Migrations
 
             modelBuilder.Entity("Tactsoft.Core.Entities.CompanyInfo", b =>
                 {
+                    b.Navigation("Attendances");
+
                     b.Navigation("BranchInfos");
 
                     b.Navigation("Employees");
@@ -2675,11 +3155,17 @@ namespace Tactsoft.Data.Data.Migrations
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Department", b =>
                 {
+                    b.Navigation("ServiceInformations");
+
                     b.Navigation("ServiceInfos");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Designation", b =>
                 {
+                    b.Navigation("EmploymentHistorys");
+
+                    b.Navigation("ServiceInformations");
+
                     b.Navigation("ServiceInfos");
                 });
 
@@ -2690,17 +3176,27 @@ namespace Tactsoft.Data.Data.Migrations
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Employee", b =>
                 {
+                    b.Navigation("Advances");
+
                     b.Navigation("Attachments");
 
                     b.Navigation("Attandances");
+
+                    b.Navigation("Attendances");
 
                     b.Navigation("Awards");
 
                     b.Navigation("Educations");
 
+                    b.Navigation("EmploymentHistorys");
+
                     b.Navigation("FamilyMembers");
 
-                    b.Navigation("SalarySetups");
+                    b.Navigation("LeaveApplications");
+
+                    b.Navigation("Nominees");
+
+                    b.Navigation("ServiceInformations");
 
                     b.Navigation("ServiceInfos");
 
@@ -2710,6 +3206,11 @@ namespace Tactsoft.Data.Data.Migrations
             modelBuilder.Entity("Tactsoft.Core.Entities.Gender", b =>
                 {
                     b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("Tactsoft.Core.Entities.LeaveType", b =>
+                {
+                    b.Navigation("LeaveApplications");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.MaritialStatus", b =>
@@ -2727,16 +3228,13 @@ namespace Tactsoft.Data.Data.Migrations
             modelBuilder.Entity("Tactsoft.Core.Entities.RelationShip", b =>
                 {
                     b.Navigation("FamilyMembers");
+
+                    b.Navigation("Nominees");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Religion", b =>
                 {
                     b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalarySetup", b =>
-                {
-                    b.Navigation("AllowensDetailss");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.State", b =>

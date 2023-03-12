@@ -90,7 +90,7 @@ namespace Tactsoft.Controllers.Admin
                     {
                         return NotFound();
                     }
-                    Att.AttandanceDate = attandance.AttandanceDate;
+                    Att.AttendanceDate = attandance.AttendanceDate;
                     Att.EmployeeId = attandance.EmployeeId;
                     Att.Present = attandance.Present;
                     Att.Remarks = attandance.Remarks;

@@ -9,8 +9,8 @@ namespace Tactsoft.Core.Entities
     {
 
         [Required]
-        [Display(Name = "Frist Name")]
-        public string FristName { get; set; }
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
         [Display(Name = "Middle Name")]
         public string MiddleName { get; set; }
         [Required]
@@ -71,7 +71,6 @@ namespace Tactsoft.Core.Entities
         public IList<Education> Educations { get; set; }
         public IList<Award>Awards { get; set; }
         public IList<Attandance> Attandances { get; set;}
-        public IList<SalarySetup> SalarySetups { get; set; }
         public IList<LeaveApplication> LeaveApplications { get; set; }
         public IList<Nominee>Nominees { get; set; }
         public IList<Advance> Advances { get; set; }
