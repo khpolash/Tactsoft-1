@@ -75,7 +75,7 @@ namespace Tactsoft.Controllers.Admin
         // GET: EducationController/Edit/5
         public async Task<IActionResult> Edit(int id)
         {
-            var Edu = await _trainingServices.GetAllAsync(x => x.Employee);
+            var Edu = await _trainingServices.GetAllAsync(x=>x.Employee);
             if (Edu == null)
             {
                 return NotFound();
@@ -105,8 +105,6 @@ namespace Tactsoft.Controllers.Admin
                     edu.EndDate = training.EndDate;
                     edu.OrganigationName = training.OrganigationName;
                     edu.EmployeeId = training.EmployeeId;
-                    
-
                     await _trainingServices.UpdateAsync(edu);
                     TempData["successAlert"] = "Training update successfull.";
                     return RedirectToAction(nameof(Index));

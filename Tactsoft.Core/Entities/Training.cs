@@ -29,5 +29,6 @@ namespace Tactsoft.Core.Entities
         [Required]
         [Display(Name = "Organigation Name")]
         public string OrganigationName { get; set; }
+       
     }
 }

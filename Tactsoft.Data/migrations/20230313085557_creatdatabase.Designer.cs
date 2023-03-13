@@ -9,10 +9,10 @@ using Tactsoft.Service.DbDependencies;
 
 #nullable disable
 
-namespace Tactsoft.Data.Migrations
+namespace Tactsoft.Data.migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230312061204_creatdatabase")]
+    [Migration("20230313085557_creatdatabase")]
     partial class creatdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -267,144 +267,6 @@ namespace Tactsoft.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.AllowanceSetting", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<int>("AllowanceType")
-                        .HasColumnType("int");
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
-                    b.Property<string>("valuePercetize")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AllowanceSettings");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            AllowanceType = 0,
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            Value = 30000.0,
-                            valuePercetize = "Good"
-                        });
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.Allowens", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<string>("AllowensName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Comment")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Allowenss");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            AllowensName = "Notice",
-                            Comment = "Salary Encrement 10% ",
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0))
-                        });
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.AllowensDetails", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long?>("AllowensId")
-                        .IsRequired()
-                        .HasColumnType("bigint");
-
-                    b.Property<double>("Amount")
-                        .HasColumnType("float");
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("SalarySetupId")
-                        .IsRequired()
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("AllowensId");
-
-                    b.HasIndex("SalarySetupId");
-
-                    b.ToTable("AllowensDetailss");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            AllowensId = 1L,
-                            Amount = 10000.0,
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            SalarySetupId = 1L
-                        });
-                });
-
             modelBuilder.Entity("Tactsoft.Core.Entities.Attachment", b =>
                 {
                     b.Property<long>("Id")
@@ -509,7 +371,7 @@ namespace Tactsoft.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
 
-                    b.Property<DateTime>("AttandanceDate")
+                    b.Property<DateTime>("AttendanceDate")
                         .HasColumnType("datetime2");
 
                     b.Property<long>("CreatedBy")
@@ -539,18 +401,6 @@ namespace Tactsoft.Data.Migrations
                     b.HasIndex("EmployeeId");
 
                     b.ToTable("Attandances");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            AttandanceDate = new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            EmployeeId = 1L,
-                            Present = 0,
-                            Remarks = "Good"
-                        });
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Attendance", b =>
@@ -621,12 +471,12 @@ namespace Tactsoft.Data.Migrations
                             CompanyInfoId = 1L,
                             CreatedBy = 0L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            Date = new DateTime(2023, 3, 12, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Local),
                             EmployeeId = 1L,
                             EntryType = "Admin",
-                            Intime = new DateTime(2023, 3, 12, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Intime = new DateTime(2023, 3, 13, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             IntimeNumber = 5.0,
-                            OutTime = new DateTime(2023, 3, 12, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            OutTime = new DateTime(2023, 3, 13, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             OutTimeNumber = 5.0
                         });
                 });
@@ -1444,7 +1294,7 @@ namespace Tactsoft.Data.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("FristName")
+                    b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -1532,7 +1382,7 @@ namespace Tactsoft.Data.Migrations
                             CreatedBy = 1L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
                             DateOfBirth = new DateTime(1994, 1, 1, 0, 2, 0, 0, DateTimeKind.Unspecified),
-                            FristName = "Hasan",
+                            FirstName = "Hasan",
                             GenderId = 1L,
                             JoiningDate = new DateTime(2020, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             LastName = "Khan",
@@ -2254,88 +2104,6 @@ namespace Tactsoft.Data.Migrations
                         });
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalarySetup", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<double>("Basic")
-                        .HasColumnType("float");
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("EmployeeId")
-                        .IsRequired()
-                        .HasColumnType("bigint");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("EmployeeId");
-
-                    b.ToTable("SalarySetups");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            Basic = 80000.0,
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            EmployeeId = 1L
-                        });
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalaryType", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<string>("SalaryTypeName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("SalaryType");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1L,
-                            CreatedBy = 0L,
-                            CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            SalaryTypeName = "House Rent"
-                        });
-                });
-
             modelBuilder.Entity("Tactsoft.Core.Entities.ServiceInfo", b =>
                 {
                     b.Property<long>("Id")
@@ -2842,25 +2610,6 @@ namespace Tactsoft.Data.Migrations
                     b.Navigation("Employee");
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.AllowensDetails", b =>
-                {
-                    b.HasOne("Tactsoft.Core.Entities.Allowens", "Allowens")
-                        .WithMany("AllowensDetailss")
-                        .HasForeignKey("AllowensId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("Tactsoft.Core.Entities.SalarySetup", "SalarySetup")
-                        .WithMany("AllowensDetailss")
-                        .HasForeignKey("SalarySetupId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Allowens");
-
-                    b.Navigation("SalarySetup");
-                });
-
             modelBuilder.Entity("Tactsoft.Core.Entities.Attachment", b =>
                 {
                     b.HasOne("Tactsoft.Core.Entities.AttachmentType", "AttachmentType")
@@ -3239,17 +2988,6 @@ namespace Tactsoft.Data.Migrations
                     b.Navigation("CompanyInfo");
                 });
 
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalarySetup", b =>
-                {
-                    b.HasOne("Tactsoft.Core.Entities.Employee", "Employee")
-                        .WithMany("SalarySetups")
-                        .HasForeignKey("EmployeeId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Employee");
-                });
-
             modelBuilder.Entity("Tactsoft.Core.Entities.ServiceInfo", b =>
                 {
                     b.HasOne("Tactsoft.Core.Entities.BranchInfo", "BranchInfo")
@@ -3344,11 +3082,6 @@ namespace Tactsoft.Data.Migrations
             modelBuilder.Entity("Tactsoft.Core.Entities.AdvanceType", b =>
                 {
                     b.Navigation("Advances");
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.Allowens", b =>
-                {
-                    b.Navigation("AllowensDetailss");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Attachment", b =>
@@ -3465,8 +3198,6 @@ namespace Tactsoft.Data.Migrations
 
                     b.Navigation("Nominees");
 
-                    b.Navigation("SalarySetups");
-
                     b.Navigation("ServiceInformations");
 
                     b.Navigation("ServiceInfos");
@@ -3506,11 +3237,6 @@ namespace Tactsoft.Data.Migrations
             modelBuilder.Entity("Tactsoft.Core.Entities.Religion", b =>
                 {
                     b.Navigation("Employees");
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.SalarySetup", b =>
-                {
-                    b.Navigation("AllowensDetailss");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.State", b =>
