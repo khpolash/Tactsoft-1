@@ -18,6 +18,7 @@ namespace Tactsoft.Core.Entities
         public long? EmployeeId { get; set; }
 
         [Display(Name = "Joining Date")]
+        [Column(TypeName = "date")]
         public DateTime JoiningDate { get; set; }
 
         [ForeignKey("Department")]

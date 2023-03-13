@@ -27,9 +27,11 @@ namespace Tactsoft.Core.Entities
         public string Duraction { get;set;}
         [Required]
         [Display(Name ="Start Date")]
+        [Column(TypeName = "date")]
         public DateTime StartDate { get;set;}
         [Required]
         [Display(Name ="End Date")]
+        [Column(TypeName = "date")]
         public DateTime EndDate { get;set;}
         public CompanyInfo CompanyInfo { get;set;}
         public BranchInfo BranchInfo { get;set;}

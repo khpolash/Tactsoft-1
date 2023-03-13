@@ -18,6 +18,7 @@ namespace Tactsoft.Core.Entities
         public string LastName { get; set; }
         [Required]
         [Display(Name =" Date Of Birth")]
+        [Column(TypeName = "date")]
         public DateTime DateOfBirth { get; set; }
         public string NID { get; set; }
         [Required]

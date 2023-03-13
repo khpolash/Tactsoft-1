@@ -3,9 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Tactsoft.Data.migrations
+namespace Tactsoft.Data.Migrations
 {
-    public partial class creatdatabase : Migration
+    public partial class Advance : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -221,7 +221,7 @@ namespace Tactsoft.Data.migrations
                     Wed = table.Column<bool>(type: "bit", nullable: false),
                     Thu = table.Column<bool>(type: "bit", nullable: false),
                     Fri = table.Column<bool>(type: "bit", nullable: false),
-                    DateOfParmanent = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOfParmanent = table.Column<DateTime>(type: "date", nullable: false),
                     Remarks = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDateUtc = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
@@ -555,7 +555,7 @@ namespace Tactsoft.Data.migrations
                     EmployeeId = table.Column<long>(type: "bigint", nullable: false),
                     Prize = table.Column<double>(type: "float", nullable: false),
                     Gift = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    Date = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    Date = table.Column<DateTime>(type: "date", nullable: false),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDateUtc = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
                     UpdatedBy = table.Column<long>(type: "bigint", nullable: true),
@@ -686,8 +686,8 @@ namespace Tactsoft.Data.migrations
                     BranchInfoId = table.Column<long>(type: "bigint", nullable: false),
                     ProjectDescription = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Duraction = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "date", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "date", nullable: false),
                     ProjectId = table.Column<long>(type: "bigint", nullable: true),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDateUtc = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
@@ -769,7 +769,7 @@ namespace Tactsoft.Data.migrations
                     FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     MiddleName = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOfBirth = table.Column<DateTime>(type: "date", nullable: false),
                     NID = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     ReligionId = table.Column<long>(type: "bigint", nullable: false),
                     MaritialStatusId = table.Column<long>(type: "bigint", nullable: false),
@@ -975,7 +975,7 @@ namespace Tactsoft.Data.migrations
                     LeaveTypeId = table.Column<long>(type: "bigint", nullable: true),
                     AttachmentFile = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "date", nullable: false),
                     Subject = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     AttachmentId = table.Column<long>(type: "bigint", nullable: true),
@@ -1056,7 +1056,7 @@ namespace Tactsoft.Data.migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<long>(type: "bigint", nullable: false),
-                    DateOfJoining = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    DateOfJoining = table.Column<DateTime>(type: "date", nullable: false),
                     DesignationId = table.Column<long>(type: "bigint", nullable: false),
                     DepertmentId = table.Column<long>(type: "bigint", nullable: false),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
@@ -1094,7 +1094,7 @@ namespace Tactsoft.Data.migrations
                     Id = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<long>(type: "bigint", nullable: true),
-                    JoiningDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    JoiningDate = table.Column<DateTime>(type: "date", nullable: false),
                     DepartmentId = table.Column<long>(type: "bigint", nullable: true),
                     DesignationId = table.Column<long>(type: "bigint", nullable: true),
                     BranchId = table.Column<long>(type: "bigint", nullable: true),
@@ -1142,8 +1142,8 @@ namespace Tactsoft.Data.migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     EmployeeId = table.Column<long>(type: "bigint", nullable: false),
                     TrainingName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    StartDate = table.Column<DateTime>(type: "datetime2", nullable: false),
-                    EndDate = table.Column<DateTime>(type: "datetime2", nullable: false),
+                    StartDate = table.Column<DateTime>(type: "date", nullable: false),
+                    EndDate = table.Column<DateTime>(type: "date", nullable: false),
                     OrganigationName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     CreatedBy = table.Column<long>(type: "bigint", nullable: false),
                     CreatedDateUtc = table.Column<DateTimeOffset>(type: "datetimeoffset", nullable: false),
@@ -1355,7 +1355,7 @@ namespace Tactsoft.Data.migrations
             migrationBuilder.InsertData(
                 table: "Attendances",
                 columns: new[] { "Id", "BranchInfoId", "CompanyInfoId", "CreatedBy", "CreatedDateUtc", "Date", "EmployeeId", "EntryType", "Intime", "IntimeNumber", "OutTime", "OutTimeNumber", "UpdatedBy", "UpdatedDateUtc" },
-                values: new object[] { 1L, 1L, 1L, 0L, new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)), new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Local), 1L, "Admin", new DateTime(2023, 3, 13, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, new DateTime(2023, 3, 13, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, null, null });
+                values: new object[] { 1L, 1L, 1L, 0L, new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)), new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Local), 1L, "Admin", new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, null, null });
 
             migrationBuilder.InsertData(
                 table: "Awards",

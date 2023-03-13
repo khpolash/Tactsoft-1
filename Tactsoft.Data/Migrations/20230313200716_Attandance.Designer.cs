@@ -9,11 +9,11 @@ using Tactsoft.Service.DbDependencies;
 
 #nullable disable
 
-namespace Tactsoft.Data.migrations
+namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230313085557_creatdatabase")]
-    partial class creatdatabase
+    [Migration("20230313200716_Attandance")]
+    partial class Attandance
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -471,12 +471,12 @@ namespace Tactsoft.Data.migrations
                             CompanyInfoId = 1L,
                             CreatedBy = 0L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            Date = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Local),
                             EmployeeId = 1L,
                             EntryType = "Admin",
-                            Intime = new DateTime(2023, 3, 13, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Intime = new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             IntimeNumber = 5.0,
-                            OutTime = new DateTime(2023, 3, 13, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            OutTime = new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             OutTimeNumber = 5.0
                         });
                 });
@@ -500,7 +500,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<long?>("EmployeeId")
                         .IsRequired()
@@ -1292,7 +1292,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("FirstName")
                         .IsRequired()
@@ -1413,7 +1413,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<DateTime>("DateOfParmanent")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<bool>("Fri")
                         .HasColumnType("bit");
@@ -1677,7 +1677,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<long?>("LeaveTypeId")
                         .HasColumnType("bigint");
@@ -1905,7 +1905,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("ProjectDescription")
                         .HasColumnType("nvarchar(max)");
@@ -1918,7 +1918,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<long?>("UpdatedBy")
                         .HasColumnType("bigint");
@@ -2131,7 +2131,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("JoiningDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("Remarks")
                         .HasColumnType("nvarchar(max)");
@@ -2187,7 +2187,7 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("datetimeoffset");
 
                     b.Property<DateTime>("DateOfJoining")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<long?>("DepertmentId")
                         .IsRequired()
@@ -2317,14 +2317,14 @@ namespace Tactsoft.Data.migrations
                         .HasColumnType("bigint");
 
                     b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("OrganigationName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
+                        .HasColumnType("date");
 
                     b.Property<string>("TrainingName")
                         .IsRequired()

@@ -25,6 +25,7 @@ namespace Tactsoft.Core.Entities
         public DateTime StartDate { get; set; }
 
         [Display(Name = "End Date")]
+        [Column(TypeName = "date")]
         public DateTime EndDate { get; set; }
 
         public string Subject { get; set; }

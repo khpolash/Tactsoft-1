@@ -13,6 +13,7 @@ namespace Tactsoft.Core.Entities
     {
         [Required]
         [Display(Name ="Attendance Date")]
+
         public DateTime AttendanceDate { get; set; }
         [Required]
         [ForeignKey("Employee")]

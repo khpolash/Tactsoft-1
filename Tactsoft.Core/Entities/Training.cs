@@ -20,9 +20,11 @@ namespace Tactsoft.Core.Entities
 
         public string TrainingName { get; set; }
         [Required]
+        [Column(TypeName = "date")]
         [Display(Name = "Start Date")]
         public DateTime StartDate { get; set; }
         [Required]
+        [Column(TypeName = "date")]
         [Display(Name = "End Date")]
         public DateTime EndDate { get; set; }
         public Employee Employee { get; set; }

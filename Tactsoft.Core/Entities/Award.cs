@@ -21,6 +21,7 @@ namespace Tactsoft.Core.Entities
         public long? EmployeeId { get; set; }
         public double Prize { get; set; }
         public string Gift { get; set; }
+        [Column(TypeName = "date")]
         public DateTime Date { get; set; }
         public AwardType AwardType { get; set; }
         public Employee Employee { get; set; }
