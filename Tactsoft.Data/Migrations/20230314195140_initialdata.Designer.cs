@@ -12,8 +12,8 @@ using Tactsoft.Service.DbDependencies;
 namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20230313200716_Attandance")]
-    partial class Attandance
+    [Migration("20230314195140_initialdata")]
+    partial class initialdata
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -471,12 +471,12 @@ namespace Tactsoft.Data.Migrations
                             CompanyInfoId = 1L,
                             CreatedBy = 0L,
                             CreatedDateUtc = new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)),
-                            Date = new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Local),
+                            Date = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             EmployeeId = 1L,
                             EntryType = "Admin",
-                            Intime = new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            Intime = new DateTime(2023, 3, 15, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             IntimeNumber = 5.0,
-                            OutTime = new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified),
+                            OutTime = new DateTime(2023, 3, 15, 10, 0, 0, 0, DateTimeKind.Unspecified),
                             OutTimeNumber = 5.0
                         });
                 });

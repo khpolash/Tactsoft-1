@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Tactsoft.Data.Migrations
 {
-    public partial class Advance : Migration
+    public partial class initialdata : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -1355,7 +1355,7 @@ namespace Tactsoft.Data.Migrations
             migrationBuilder.InsertData(
                 table: "Attendances",
                 columns: new[] { "Id", "BranchInfoId", "CompanyInfoId", "CreatedBy", "CreatedDateUtc", "Date", "EmployeeId", "EntryType", "Intime", "IntimeNumber", "OutTime", "OutTimeNumber", "UpdatedBy", "UpdatedDateUtc" },
-                values: new object[] { 1L, 1L, 1L, 0L, new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)), new DateTime(2023, 3, 14, 0, 0, 0, 0, DateTimeKind.Local), 1L, "Admin", new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, new DateTime(2023, 3, 14, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, null, null });
+                values: new object[] { 1L, 1L, 1L, 0L, new DateTimeOffset(new DateTime(2023, 2, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), new TimeSpan(0, 6, 0, 0, 0)), new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Local), 1L, "Admin", new DateTime(2023, 3, 15, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, new DateTime(2023, 3, 15, 10, 0, 0, 0, DateTimeKind.Unspecified), 5.0, null, null });
 
             migrationBuilder.InsertData(
                 table: "Awards",
