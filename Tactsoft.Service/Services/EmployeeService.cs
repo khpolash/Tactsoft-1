@@ -13,10 +13,24 @@ namespace Tactsoft.Service.Services
         {
             this._Context = context;
         }
-        public IEnumerable<SelectListItem> Dropdown()
+ 
+        IEnumerable<Employee> IEmployeeService.AllByDepertmentId(int deptId)
         {
-            return All().Select(x => new SelectListItem { Text = x.FirstName,Value = x.Id.ToString() });
+            if (deptId == 0)
+                return All();
+            return All().Where(x => x.DepartmentId == deptId);
         }
 
+        IEnumerable<SelectListItem> IEmployeeService.Dropdown()
+        {
+            
+            return All().Select(x => new SelectListItem { Text = x.FirstName, Value = x.Id.ToString() });
+        }
+
+        string IEmployeeService.NameById(long id)
+        {
+            var emp = Find(id);
+            return emp.FirstName + " " + emp.MiddleName + " " + emp.LastName;
+        }
     }
 }

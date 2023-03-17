@@ -40,6 +40,9 @@ namespace Tactsoft.Core.Entities
         [ForeignKey("Company")]
         [Display(Name = " Company Name")]
         public long? CompanyId { get; set; }
+        [Display(Name = "Department")]
+        public long? DepartmentId { get; set; }
+        public Department Department { get; set; }
         [Required]
         [ForeignKey("Branch")]
         [Display(Name = "Branch Name")]
