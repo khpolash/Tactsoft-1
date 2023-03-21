@@ -59,8 +59,8 @@ namespace Tactsoft.Service.DbDependencies
         public DbSet<ServiceInformation> ServiceInformations { get; set; }
         public DbSet<EmployeeType> EmployeeTypes { get; set; }
         public DbSet<Attendence>Attendences { get; set; }
-
-
+        public DbSet<AllowanceDeduction> AllowanceDeductions { get; set; }
+        public DbSet<SalarySetup> SalarySetups { get; set; }
 
 
 

@@ -3,7 +3,7 @@ using Tactsoft.Core.Entities;
 using Tactsoft.Core.Entities.ViewModels;
 using Tactsoft.Service.Services;
 
-namespace Tactsoft.Controllers
+namespace Tactsoft.Controllers.Admin
 {
     public class AttendenceController : Controller
     {
@@ -14,9 +14,9 @@ namespace Tactsoft.Controllers
         public AttendenceController(IAttendenceService attendanceService, IDepartmentService departmentService,
             IEmployeeService employeeService)
         {
-            this._attendanceService = attendanceService;
-            this._departmentService = departmentService;
-            this._employeeService = employeeService;
+            _attendanceService = attendanceService;
+            _departmentService = departmentService;
+            _employeeService = employeeService;
         }
         public IActionResult Index()
         {
