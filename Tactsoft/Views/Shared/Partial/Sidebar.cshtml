@@ -32,7 +32,12 @@
                         <p>Attachment</p>
                     </a>
                 </li>
-
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="AllowanceDeduction" asp-action="Index">
+                        <i class="fas fa-user-tie nav-icon"></i>
+                        <p>Allowancement</p>
+                    </a>
+                </li>
 
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="ServiceInfo" asp-action="Index">
@@ -47,7 +52,29 @@
                     </a>
                 </li>
 
-
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-comments-dollar"></i>
+                        <p>
+                            Pay Slip
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="PayRoll" asp-action="AllowanceDeductionList">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Allowance/Deduction</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="PayRoll" asp-action="SalarySetup">
+                                <i class="fas fa-user-check nav-icon"></i>
+                                <p>Employee Salary Setup</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-globe nav-icon"></i>

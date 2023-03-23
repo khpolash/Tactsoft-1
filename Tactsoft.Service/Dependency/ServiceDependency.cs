@@ -56,7 +56,9 @@ namespace Tactsoft.Service.Dependency
             services.AddScoped<IServiceInformationServices, ServiceInformationServices>();
             services.AddScoped<IEmployeeTypeServices, EmployeeTypeServices>();
             services.AddScoped<IAttendenceService, AttendenceService>();
-
+            services.AddScoped<IAllowanceDeductionServices, AllowanceDeductionServices>();
+            services.AddScoped<ISalarySetupService, SalarySetupService>();
+            services.AddScoped<IAllowanceSetupService, AllowanceSetupService>();
 
 
         }

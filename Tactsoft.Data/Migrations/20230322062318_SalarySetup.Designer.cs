@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Tactsoft.Service.DbDependencies;
 
@@ -11,9 +12,10 @@ using Tactsoft.Service.DbDependencies;
 namespace Tactsoft.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20230322062318_SalarySetup")]
+    partial class SalarySetup
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -296,40 +298,6 @@ namespace Tactsoft.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("AllowanceDeductions");
-                });
-
-            modelBuilder.Entity("Tactsoft.Core.Entities.AllowanceSetup", b =>
-                {
-                    b.Property<long>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("bigint");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"), 1L, 1);
-
-                    b.Property<int>("AllowanceType")
-                        .HasColumnType("int");
-
-                    b.Property<long>("CreatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset>("CreatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<long?>("UpdatedBy")
-                        .HasColumnType("bigint");
-
-                    b.Property<DateTimeOffset?>("UpdatedDateUtc")
-                        .HasColumnType("datetimeoffset");
-
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
-                    b.Property<string>("ValuePercetize")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("AllowanceSetups");
                 });
 
             modelBuilder.Entity("Tactsoft.Core.Entities.Attachment", b =>

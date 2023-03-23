@@ -8,7 +8,7 @@ using System.Reflection;
 using Tactsoft.Data.DbDependencies;
 using Tactsoft.Core;
 using Tactsoft.Core.Entities;
-using Gender = Tactsoft.Core.Entities;
+
 
 namespace Tactsoft.Service.DbDependencies
 {
@@ -60,7 +60,9 @@ namespace Tactsoft.Service.DbDependencies
         public DbSet<EmployeeType> EmployeeTypes { get; set; }
         public DbSet<Attendence>Attendences { get; set; }
         public DbSet<AllowanceDeduction> AllowanceDeductions { get; set; }
-        public DbSet<SalarySetup> SalarySetups { get; set; }
+        public DbSet<SalarySetup>SalarySetups { get; set; }
+        public DbSet<AllowanceSetup> AllowanceSetups { get; set; }
+        
 
 
 

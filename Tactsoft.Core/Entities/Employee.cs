@@ -81,6 +81,7 @@ namespace Tactsoft.Core.Entities
         public IList<EmploymentHistory> EmploymentHistorys { get; set; }
         public IList<Attendance> Attendances { get; set; }
         public IList<ServiceInformation> ServiceInformations { get; set; }
-        public IList<SalarySetup> SalarySetups { get; set; }
+        public IList<SalarySetup> SalarySetups { get;set; }
+    
     }
 }

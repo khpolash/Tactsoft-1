@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Mvc.Rendering;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,9 +8,8 @@ using Tactsoft.Service.Services.Base;
 
 namespace Tactsoft.Service.Services
 {
-    public interface IAllowanceDeductionServices:IBaseService<AllowanceDeduction>
+    public interface IAllowanceSetupService : IBaseService<AllowanceSetup>
     {
-        IEnumerable<SelectListItem> Dropdown();
-        string NameById(long id);
+        
     }
 }

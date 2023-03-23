@@ -3,6 +3,7 @@
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+    int i = 1;
 }
 
 <h1>Index</h1>
@@ -43,6 +44,7 @@
 
                         <thead>
                             <tr>
+                                <th>No</th>
                                 <th>
                                     @Html.DisplayNameFor(model => model.CountryName)
                                 </th>
@@ -56,6 +58,7 @@
                             @foreach (var item in Model)
                             {
                                 <tr>
+                                    <td>@i</td>
                                     <td>
                                         @Html.DisplayFor(modelItem => item.CountryName)
                                     </td>
@@ -68,6 +71,7 @@
                                         @Html.ActionLink("", "Delete", new { id = item.Id }, new { @class = "fa-regular fa-trash-can", @style = "color:red" })
                                     </td>
                                 </tr>
+                                i++;
                             }
                         </tbody>
                     </table>
