@@ -3,11 +3,11 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using Tactsoft.Core.Entities;
 
-namespace Tactsoft.Core.ViewModels
+namespace Tactsoft.Core.ViewModel
 {
-    public class SalarySetupModels
+    public class SalarySetupModel
     {
-        public SalarySetupModels()
+        public SalarySetupModel()
         {
             SalarySetupList = new Collection<SalarySetupList>();
         }

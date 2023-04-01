@@ -1,29 +1,31 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Tactsoft.Core.Entities;
-
-using Tactsoft.Core.ViewModels;
+using Tactsoft.Core.Entities.ViewModels;
+using Tactsoft.Core.ViewModel;
 using Tactsoft.Service.Services;
 
 namespace Tactsoft.Controllers.Admin
 {
     public class PayRollController : Controller
     {
-        private readonly IAllowanceDeductionServices _allowanceDeductionServices;
+        private readonly IAllowanceDeductionServices _allowanceDeductionService;
         private readonly ISalarySetupService _salarySetupService;
-        private IEmployeeService _employeeService;
-        public PayRollController(IAllowanceDeductionServices allowanceDeductionServices,ISalarySetupService salarySetupService,IEmployeeService employeeService)
+        private readonly IDepartmentService _departmentService;
+        private readonly IEmployeeService _employeeService;
+
+        public PayRollController(IAllowanceDeductionServices allowanceDeductionService, IDepartmentService departmentService, IEmployeeService employeeService, ISalarySetupService salarySetupService)
         {
-            this._allowanceDeductionServices = allowanceDeductionServices;
-            this._salarySetupService = salarySetupService;
+            this._allowanceDeductionService = allowanceDeductionService;
+            this._departmentService = departmentService;
             this._employeeService = employeeService;
+            this._salarySetupService = salarySetupService;
         }
 
-    
+
+        [HttpGet]
         public async Task<IActionResult> AllowanceDeductionList()
         {
-            var pay = await _allowanceDeductionServices.GetAllAsync();
-
-            return View(pay);
+            return View(await _allowanceDeductionService.GetAllAsync());
         }
 
         [HttpPost]
@@ -34,35 +36,36 @@ namespace Tactsoft.Controllers.Admin
             {
                 if (model.Id > 0)
                 {
-                    await _allowanceDeductionServices.UpdateAsync(model.Id, model);
-                    return RedirectToAction("Index");
+                    await _allowanceDeductionService.UpdateAsync(model.Id, model);
+                    return RedirectToAction("AllowanceDeductionList");
                 }
-                if (_allowanceDeductionServices.All().Any(x=>x.AllowanceDeductionName == model.AllowanceDeductionName))
+                if (_allowanceDeductionService.All().Any(x => x.AllowanceDeductionName == model.AllowanceDeductionName))
                 {
-                    ModelState.AddModelError("AllowanceDeductionName", "Already Exists !");
-                    return View( await _allowanceDeductionServices.GetAllAsync());
-
+                    ModelState.AddModelError("AllowanceDeductionName", "Already Exists!");
+                    return View(await _allowanceDeductionService.GetAllAsync());
                 }
-                await _allowanceDeductionServices.InsertAsync(model);
-                return RedirectToAction("Index");
+                await _allowanceDeductionService.InsertAsync(model);
+                return RedirectToAction("AllowanceDeductionList");
             }
-            return View(await _allowanceDeductionServices.GetAllAsync());
+            return View(await _allowanceDeductionService.GetAllAsync());
         }
 
-       
+        // GET: CityController/TakeAttendence
         public ActionResult SalarySetup()
         {
+            ViewData["DepartmentId"] = _departmentService.Dropdown();
             ViewData["EmployeeId"] = _employeeService.Dropdown();
-            return View(new SalarySetupModels());
+            return View(new SalarySetupModel());
         }
 
 
         [HttpPost]
-        public IActionResult SalarySetup(SalarySetupModels model)
+        public IActionResult SalarySetup(SalarySetupModel model)
         {
+            ViewData["DepartmentId"] = _departmentService.Dropdown();
             ViewData["EmployeeId"] = _employeeService.Dropdown();
             var salarySatups = _salarySetupService.All().Any(x => x.EmployeeId == model.EmployeeId);
-            SalarySetupModels salarySetupModel = new SalarySetupModels();
+            SalarySetupModel salarySetupModel = new SalarySetupModel();
             salarySetupModel.DepartmentId = model.DepartmentId;
             salarySetupModel.EmployeeId = model.EmployeeId;
 
@@ -71,10 +74,10 @@ namespace Tactsoft.Controllers.Admin
                 var salarySatupList = _salarySetupService.All().Where(x => x.EmployeeId == model.EmployeeId).ToList();
                 foreach (var item in salarySatupList)
                 {
-                    salarySetupModel.SalarySetupList.Add(new Core.ViewModels.SalarySetupList
+                    salarySetupModel.SalarySetupList.Add(new SalarySetupList
                     {
                         AllowanceDeductionId = item.AllowanceDeductionId,
-                        AllowanceDeductionName = _allowanceDeductionServices.NameById(item.AllowanceDeductionId),
+                        AllowanceDeductionName = _allowanceDeductionService.NameById(item.AllowanceDeductionId),
                         SalarySetupId = item.Id,
                         IsPercent = item.IsPercent,
                         Value = item.Value
@@ -83,19 +86,20 @@ namespace Tactsoft.Controllers.Admin
                 return View(salarySetupModel);
             }
 
-            var ad = _allowanceDeductionServices.All();
+            var ad = _allowanceDeductionService.All();
             if (ad != null)
             {
                 foreach (var item in ad)
                 {
-                    salarySetupModel.SalarySetupList.Add(new Core.ViewModels.SalarySetupList { AllowanceDeductionId = item.Id, AllowanceDeductionName = item.AllowanceDeductionName, AllowanceDeductionType = item.AllowanceDeductionType });
+                    salarySetupModel.SalarySetupList.Add(new SalarySetupList { AllowanceDeductionId = item.Id, AllowanceDeductionName = item.AllowanceDeductionName, AllowanceDeductionType = item.AllowanceDeductionType });
                 }
                 return View(salarySetupModel);
             }
             return View(model);
         }
+
         [HttpPost]
-        public async Task<IActionResult> SaveSalarySetup(SalarySetupModels model)
+        public async Task<IActionResult> SaveSalarySetup(SalarySetupModel model)
         {
             if (model.SalarySetupList.Count() > 0)
             {
@@ -128,5 +132,6 @@ namespace Tactsoft.Controllers.Admin
             }
             return RedirectToAction("SalarySetup");
         }
+
     }
 }

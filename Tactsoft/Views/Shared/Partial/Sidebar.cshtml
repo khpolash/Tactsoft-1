@@ -15,67 +15,6 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Employee" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p>Employee</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="FamilyMember" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p>Family Member</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Attachment" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p>Attachment</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="AllowanceDeduction" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p>Allowancement</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="ServiceInfo" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p>Service</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Attandance" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p>Attendance</p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fa-solid fa-comments-dollar"></i>
-                        <p>
-                            Pay Slip
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="PayRoll" asp-action="AllowanceDeductionList">
-                                <i class="fas fa-list nav-icon"></i>
-                                <p>Allowance/Deduction</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" asp-controller="PayRoll" asp-action="SalarySetup">
-                                <i class="fas fa-user-check nav-icon"></i>
-                                <p>Employee Salary Setup</p>
-                            </a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="fas fa-globe nav-icon"></i>
                         <p>
@@ -162,51 +101,183 @@
 
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-globe nav-icon"></i>
+                        <p>
+                            Company Info
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="margin-left:20px;">
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Company" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Company</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Branch" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Branch</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Project" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Project</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="AwardType" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Award Type</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-globe nav-icon"></i>
+                        <p>
+                            Staff Info
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="margin-left:20px;">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Employee" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p>Employee</p>
+                            </a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="FamilyMember" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p>Family Member</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="ServiceInfo" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p>Service</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="EmploymentHistory" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Employment History </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Nominee" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Nominee  </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Award" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Award</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Training" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p>Traning</p>
+                            </a>
+                        </li>
+
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fa-solid fa-comments-dollar"></i>
+                        <p>
+                            Pay Slip
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="PayRoll" asp-action="AllowanceDeductionList">
+                                <i class="fas fa-list nav-icon"></i>
+                                <p>Allowance/Deduction</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="PayRoll" asp-action="SalarySetup">
+                                <i class="fas fa-user-check nav-icon"></i>
+                                <p>Employee Salary Setup</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="fas fa-globe nav-icon"></i>
+                        <p>
+                            Attendence
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview" style="margin-left:20px;">
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Attendence" asp-action="TakeAttendence">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p>Take Attendence </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" asp-controller="Attendence" asp-action="Index">
+                                <i class="fas fa-user-tie nav-icon"></i>
+                                <p> Attendence Report</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
 
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Training" asp-action="Index">
+                    <a class="nav-link" asp-controller="Reference" asp-action="Index">
                         <i class="fas fa-user-tie nav-icon"></i>
-                        <p>Traning</p>
+                        <p> Reference </p>
+                    </a>
+                </li>
+                
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="Attachment" asp-action="Index">
+                        <i class="fas fa-user-tie nav-icon"></i>
+                        <p>Attachment</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" asp-controller="AllowanceDeduction" asp-action="Index">
+                        <i class="fas fa-user-tie nav-icon"></i>
+                        <p>Allowancement</p>
                     </a>
                 </li>
 
+               
                 <li class="nav-item">
-                    <a class="nav-link" asp-controller="Company" asp-action="Index">
+                    <a class="nav-link" asp-controller="Attandance" asp-action="Index">
                         <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Company</p>
+                        <p>Attendance</p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Branch" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Branch</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Project" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Project</p>
-                    </a>
-                </li>
+                </li> 
+                
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Leave" asp-action="Index">
                         <i class="fas fa-user-tie nav-icon"></i>
                         <p> Leave</p>
                     </a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="AwardType" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Award Type</p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Award" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Award</p>
-                    </a>
-                </li>
-
+                
                 <li class="nav-item">
                     <a class="nav-link" asp-controller="Deduction" asp-action="Index">
                         <i class="fas fa-user-tie nav-icon"></i>
@@ -230,49 +301,7 @@
                         <i class="fas fa-user-tie nav-icon"></i>
                         <p> Advance </p>
                     </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="EmploymentHistory" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Employment History </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Nominee" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Nominee  </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" asp-controller="Reference" asp-action="Index">
-                        <i class="fas fa-user-tie nav-icon"></i>
-                        <p> Reference </p>
-                    </a>
-                </li>
-
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="fas fa-globe nav-icon"></i>
-                        <p>
-                            Attendence
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview" style="margin-left:20px;">
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Attendence" asp-action="TakeAttendence">
-                            <i class="fas fa-user-tie nav-icon"></i>
-                            <p>Take Attendence </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-controller="Attendence" asp-action="Index">
-                            <i class="fas fa-user-tie nav-icon"></i>
-                            <p> Attendence Report</p>
-                        </a>
-                    </li>
-                    </ul>
-                </li>
+                </li>              
             </ul>
         </nav>
     </div>
