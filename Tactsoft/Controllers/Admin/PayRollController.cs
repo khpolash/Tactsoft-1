@@ -45,7 +45,6 @@ namespace Tactsoft.Controllers.Admin
                     return View(await _allowanceDeductionService.GetAllAsync());
                 }
                 await _allowanceDeductionService.InsertAsync(model);
-                return RedirectToAction("AllowanceDeductionList");
             }
             return View(await _allowanceDeductionService.GetAllAsync());
         }
