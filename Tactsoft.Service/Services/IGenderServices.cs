@@ -12,5 +12,6 @@ namespace Tactsoft.Service.Services
     public interface IGenderServices:IBaseService<Gender>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long genderId);
     }
 }

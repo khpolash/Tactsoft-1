@@ -21,5 +21,13 @@ namespace Tactsoft.Service.Services
         {
             return All().Select(x => new SelectListItem { Text = x.DesignationName ,Value = x.Id.ToString() });
         }
+
+        public long NameById(long designationId)
+        {
+            var Designation = Find(designationId);
+            return Designation.Id;
+        }
+
+     
     }
 }

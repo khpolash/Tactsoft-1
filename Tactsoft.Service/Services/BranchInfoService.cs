@@ -21,5 +21,11 @@ namespace Tactsoft.Service.Services
         {
             return All().Select(x => new SelectListItem { Text = x.BranceName, Value = x.Id.ToString() });
         }
+
+        public string NameById(long brancehId)
+        {
+            var branch = Find(brancehId);
+            return branch.BranceName;
+        }
     }
 }

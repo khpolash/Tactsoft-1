@@ -12,5 +12,6 @@ namespace Tactsoft.Service.Services
     public interface IProjectService : IBaseService<Project>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long projectId);
     }
 }

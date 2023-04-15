@@ -13,5 +13,6 @@ namespace Tactsoft.Service.Services
     public interface ICompanyInfoServices:IBaseService<CompanyInfo>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long companyId);
     }
 }

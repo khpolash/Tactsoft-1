@@ -24,24 +24,24 @@ namespace Tactsoft.Core.Entities
         [Required]
         [ForeignKey("Religion")]
         [Display(Name ="Religion")]
-        public long? ReligionId { get; set; }
+        public long ReligionId { get; set; }
         
         [Required]
         [ForeignKey("MaritalStatus")]
         [Display(Name ="Marital Status")]
-        public long? MaritialStatusId { get;set; }
+        public long MaritialStatusId { get;set; }
         public string Nationalaty { get; set; }
         public string Picture { get; set; } 
         [Required]
         [ForeignKey("Gender")]
         [Display(Name ="Gender")]
-        public long? GenderId { get; set; }
+        public long GenderId { get; set; }
         [Required]
         [ForeignKey("Company")]
         [Display(Name = " Company Name")]
-        public long? CompanyId { get; set; }
+        public long CompanyId { get; set; }
         [Display(Name = "Department")]
-        public long? DepartmentId { get; set; }
+        public long DepartmentId { get; set; }
         public Department Department { get; set; }
         [Required]
         [ForeignKey("Branch")]

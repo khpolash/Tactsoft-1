@@ -12,5 +12,6 @@ namespace Tactsoft.Service.Services
     public interface IDesignationService:IBaseService<Designation>
     {
         IEnumerable<SelectListItem> Dropdown();
+        long NameById(long designationId);
     }
 }

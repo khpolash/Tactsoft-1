@@ -12,5 +12,6 @@ namespace Tactsoft.Service.Services
     public interface IBranchInfoServices:IBaseService<BranchInfo>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long brancehId);
     }
 }

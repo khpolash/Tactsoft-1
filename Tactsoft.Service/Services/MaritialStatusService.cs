@@ -21,5 +21,11 @@ namespace Tactsoft.Service.Services
         {
             return All().Select(x=>new SelectListItem { Text=x.MaritialStatusName,Value=x.Id.ToString() });
         }
+
+        public string NameById(long maritialId)
+        {
+            var MaritialStatus = Find(maritialId);
+            return MaritialStatus.MaritialStatusName;
+        }
     }
 }

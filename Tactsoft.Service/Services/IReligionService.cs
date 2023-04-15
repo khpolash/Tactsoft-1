@@ -12,5 +12,6 @@ namespace Tactsoft.Service.Services
     public interface IReligionService:IBaseService<Religion>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long religionid);
     }
 }

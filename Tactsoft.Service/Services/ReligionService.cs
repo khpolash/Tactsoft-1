@@ -21,5 +21,10 @@ namespace Tactsoft.Service.Services
         {
             return All().Select(x=>new SelectListItem{ Text=x.ReligionName, Value=x.Id.ToString() });
         }
+        public string NameById(long religionId)
+        {
+            var religion=Find(religionId);
+            return religion.ReligionName;
+        }
     }
 }

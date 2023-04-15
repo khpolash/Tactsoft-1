@@ -12,5 +12,6 @@ namespace Tactsoft.Service.Services
     public interface IMaritialStatusService:IBaseService<MaritialStatus>
     {
         IEnumerable<SelectListItem> Dropdown();
+        string NameById(long maritialId);
     }
 }
