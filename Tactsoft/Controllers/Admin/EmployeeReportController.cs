@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Tactsoft.Data.DbDependencies;
 using Tactsoft.Service.Services;
 
 namespace Tactsoft.Controllers.Admin
@@ -22,7 +24,7 @@ namespace Tactsoft.Controllers.Admin
         }
         //public IActionResult DownloadInvoicePDF(long id)
         //{
-        //    var result = _reportService.GetInvoiceReportData(id);
+        //    var result = _employeeReportService.GetInvoiceReportData(id);
         //    var rpt = new ViewAsPdf();
         //    rpt.PageOrientation = Orientation.Portrait;
         //    rpt.CustomSwitches = footer;
@@ -42,7 +44,7 @@ namespace Tactsoft.Controllers.Admin
         //{
         //    ViewBag.StartDate = startDate.ToString("dd/MM/yyyy");
         //    ViewBag.EndDate = endDate.ToString("dd/MM/yyyy");
-        //    var data = _reportService.ReportByDateRange(startDate, endDate);
+        //    var data = _employeeReportService.ReportByDateRange(startDate, endDate);
 
         //    return View(data);
         //}
