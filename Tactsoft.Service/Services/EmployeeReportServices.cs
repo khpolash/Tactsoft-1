@@ -7,19 +7,17 @@ namespace Tactsoft.Service.Services
     public class EmployeeReportService : IEmployeeReportService
     {
         private readonly AppDbContext _appDbContext;
-        private readonly IEmployeeReportService _employeeReportService;
         private readonly IEmployeeService _employeeService;
         private readonly IFamilyMemberServices _familyMemberServices;
         private readonly IEmploymentHistoryService _employmentHistoryService;
 
-        public EmployeeReportService(AppDbContext Context, IEmployeeReportService employeeReportService, IEmployeeService employeeService,
+        public EmployeeReportService(AppDbContext context, IEmployeeService employeeService,
             IFamilyMemberServices familyMemberServices, IEmploymentHistoryService employmentHistoryService)
         {
-            this._appDbContext = Context;
+            this._appDbContext = context;
             this._employeeService = employeeService;
             this._employmentHistoryService = employmentHistoryService;
             this._familyMemberServices = familyMemberServices;
-            this._employeeReportService = employeeReportService;
         }
 
         public EmployeeReportViewModel GetEmployeeRepoprtData(long id)
